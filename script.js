@@ -4,12 +4,12 @@ const WHATSAPP_NUMBER = "51947227596";
 
 // CATÁLOGO: precios, textos, categorías e imágenes se editan en este arreglo.
 const PRODUCTS = [
-  {id:'lucuma-mani',name:'Lúcuma & Maní',category:'proteicas',label:'ISO Whey',desc:'Lúcuma peruana y maní en una barra con 20 g de proteína.',price:13.50,bg:'#f2cf98',image:'./imagenes/lucuma_y_mani_73gr.png'},
-  {id:'menta-chocolate',name:'Menta & Chocolate',category:'proteicas',label:'ISO Whey',desc:'Cacao intenso con un final fresco y 20 g de proteína.',price:13.50,bg:'#f0c987',image:'./imagenes/menta_y_chocolate.png'},
-  {id:'cacao-cashew',name:'Cacao & Cashew',category:'proteicas',label:'Plant-Based',desc:'Chocolate profundo, cashews y 10 g de proteína vegetal.',price:13.50,bg:'#e8bd7d',image:'./imagenes/cacao_y_cashew.png'},
-  {id:'maras-chocolate',name:'Sal de Maras & Chocolate',category:'proteicas',label:'Plant-Based',desc:'El balance irresistible entre cacao y sal de Maras.',price:13.50,bg:'#f3d9ad',image:'./imagenes/saldemaras_y_chocolate.png'},
-  {id:'maca-lucuma-cacao',name:'Maca, Lúcuma & Cacao',category:'superfoods',label:'Superfoods',desc:'Tres superfoods peruanos reunidos en una barra práctica.',price:12.50,bg:'#e5a85c',image:'./imagenes/maca_lucuma_y_cacao.png'},
-  {id:'mini-iso-whey',name:'Mini ISO Whey',category:'mini',label:'Mini',desc:'Lúcuma y maní: tamaño práctico con 7 g de proteína.',price:8.50,bg:'#f6dfb8',image:'./imagenes/lucuma_y_mani.png'}
+  {id:'lucuma-mani',name:'Lúcuma & Maní',category:'proteicas',label:'ISO Whey',desc:'Lúcuma peruana y maní en una barra con 20 g de proteína.',price:13.50,bg:'#f2cf98',image:'./lucuma_y_mani_73gr.png'},
+  {id:'menta-chocolate',name:'Menta & Chocolate',category:'proteicas',label:'ISO Whey',desc:'Cacao intenso con un final fresco y 20 g de proteína.',price:13.50,bg:'#f0c987',image:'./menta_y_chocolate.png'},
+  {id:'cacao-cashew',name:'Cacao & Cashew',category:'proteicas',label:'Plant-Based',desc:'Chocolate profundo, cashews y 10 g de proteína vegetal.',price:13.50,bg:'#e8bd7d',image:'./cacao_y_cashew.png'},
+  {id:'maras-chocolate',name:'Sal de Maras & Chocolate',category:'proteicas',label:'Plant-Based',desc:'El balance irresistible entre cacao y sal de Maras.',price:13.50,bg:'#f3d9ad',image:'./saldemaras_y_chocolate.png'},
+  {id:'maca-lucuma-cacao',name:'Maca, Lúcuma & Cacao',category:'superfoods',label:'Superfoods',desc:'Tres superfoods peruanos reunidos en una barra práctica.',price:12.50,bg:'#e5a85c',image:'./maca_lucuma_y_cacao.png'},
+  {id:'mini-iso-whey',name:'Mini ISO Whey',category:'mini',label:'Mini',desc:'Lúcuma y maní: tamaño práctico con 7 g de proteína.',price:8.50,bg:'#f6dfb8',image:'./lucuma_y_mani.png'}
 ];
 
 const $ = (selector, scope=document) => scope.querySelector(selector);
