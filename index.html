@@ -9,8 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js?v=1" defer></script>
+  <script src="script.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Ir al contenido</a>
@@ -145,8 +147,8 @@
     <div class="auth-brand"><span class="brand-mark"><img src="./logo.png" alt=""></span><p>Una cuenta. Más energía.</p></div>
     <div id="loggedOutView">
       <div class="auth-tabs"><button class="auth-tab active" data-tab="login">Ingresar</button><button class="auth-tab" data-tab="register">Crear cuenta</button></div>
-      <form id="loginForm" class="auth-form active" novalidate><h2 id="authTitle">Qué gusto verte</h2><p>Ingresa para continuar con tu compra.</p><label>Correo electrónico<input type="email" id="loginEmail" placeholder="tu@correo.com" autocomplete="email"><small class="error"></small></label><label>Contraseña<input type="password" id="loginPassword" placeholder="Mínimo 6 caracteres" autocomplete="current-password"><small class="error"></small></label><button class="btn btn-primary btn-block" type="submit">Ingresar</button></form>
-      <form id="registerForm" class="auth-form" novalidate><h2>Crea tu cuenta</h2><p>Tu próxima barra está a un paso.</p><label>Nombre<input type="text" id="registerName" placeholder="Tu nombre" autocomplete="name"><small class="error"></small></label><label>Correo electrónico<input type="email" id="registerEmail" placeholder="tu@correo.com" autocomplete="email"><small class="error"></small></label><label>Contraseña<input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password"><small class="error"></small></label><button class="btn btn-primary btn-block" type="submit">Crear mi cuenta</button></form>
+      <form id="loginForm" class="auth-form active" novalidate><h2 id="authTitle">Qué gusto verte</h2><p>Ingresa para continuar con tu compra.</p><label>Correo electrónico<input type="email" id="loginEmail" placeholder="tu@correo.com" autocomplete="email"><small class="error"></small></label><label>Contraseña<input type="password" id="loginPassword" placeholder="Mínimo 6 caracteres" autocomplete="current-password"><small class="error"></small></label><button class="auth-link" id="forgotPassword" type="button">Olvidé mi contraseña</button><button class="btn btn-primary btn-block" type="submit">Ingresar</button></form>
+      <form id="registerForm" class="auth-form" novalidate><h2>Crea tu cuenta</h2><p>Tu próxima barra está a un paso.</p><label>Nombre<input type="text" id="registerName" placeholder="Tu nombre" autocomplete="name"><small class="error"></small></label><label>Correo electrónico<input type="email" id="registerEmail" placeholder="tu@correo.com" autocomplete="email"><small class="error"></small></label><label>Contraseña<input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password"><small class="error"></small></label><label class="marketing-consent"><input type="checkbox" id="registerMarketing"> Quiero recibir novedades, promociones y cupones de Vitabars. Puedo darme de baja cuando quiera.</label><button class="btn btn-primary btn-block" type="submit">Crear mi cuenta</button></form>
     </div>
     <div id="loggedInView" class="logged-in" hidden><div class="login-check">✓</div><h2>¡Hola, <span id="userName"></span>!</h2><p>Tu sesión está activa. Ya puedes seguir eligiendo tus favoritas.</p><button class="btn btn-secondary btn-block" id="logoutButton">Cerrar sesión</button></div>
   </section>

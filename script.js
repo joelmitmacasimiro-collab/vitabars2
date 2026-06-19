@@ -15,6 +15,8 @@ const PRODUCTS = [
 const $ = (selector, scope=document) => scope.querySelector(selector);
 const $$ = (selector, scope=document) => [...scope.querySelectorAll(selector)];
 const money = value => `S/ ${value.toFixed(2)}`;
+const supabaseClient = window.vitabarsSupabase;
+const AUTH_REDIRECT_URL = 'https://joelmitmacasimiro-collab.github.io/vitabars2/';
 let cart = JSON.parse(localStorage.getItem('vitabars_cart') || '[]');
 let toastTimer;
 
@@ -64,7 +66,22 @@ function openCulqi(){
 }
 
 function validateField(input,test,message){const ok=test(input.value.trim());input.classList.toggle('invalid',!ok);input.nextElementSibling.textContent=ok?'':message;return ok}
-function refreshUserView(){const user=JSON.parse(localStorage.getItem('vitabars_session')||'null');$('#loggedOutView').hidden=!!user;$('#loggedInView').hidden=!user;if(user)$('#userName').textContent=user.name}
+async function refreshUserView(){
+  if(!supabaseClient)return;
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  const user=session?.user;
+  $('#loggedOutView').hidden=!!user;
+  $('#loggedInView').hidden=!user;
+  if(user)$('#userName').textContent=user.user_metadata?.name||user.email?.split('@')[0]||'Vitabars';
+}
+function authMessage(error){
+  const message=(error?.message||'').toLowerCase();
+  if(message.includes('invalid login'))return 'Correo o contraseña incorrectos.';
+  if(message.includes('email not confirmed'))return 'Primero confirma tu correo electrónico.';
+  if(message.includes('already registered')||message.includes('already been registered'))return 'Este correo ya tiene una cuenta.';
+  if(message.includes('password'))return 'La contraseña debe tener al menos 6 caracteres.';
+  return error?.message||'No pudimos completar la operación. Inténtalo nuevamente.';
+}
 
 function openCheckout(){
   if(!cart.length){showToast('Agrega un producto antes de pagar');return}
@@ -85,9 +102,32 @@ $('#culqiPayment').addEventListener('click',openCulqi);
 $('.menu-toggle').addEventListener('click',()=>{const open=$('.nav-menu').classList.toggle('open');$('.menu-toggle').setAttribute('aria-expanded',open)});$$('.nav-menu a').forEach(a=>a.addEventListener('click',()=>$('.nav-menu').classList.remove('open')));
 $$('.auth-tab').forEach(tab=>tab.addEventListener('click',()=>{$$('.auth-tab').forEach(t=>t.classList.toggle('active',t===tab));$$('.auth-form').forEach(f=>f.classList.toggle('active',f.id.toLowerCase().startsWith(tab.dataset.tab)))}));
 
-$('#registerForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#registerName'),email=$('#registerEmail'),pass=$('#registerPassword');const valid=[validateField(name,v=>v.length>=2,'Ingresa al menos 2 caracteres.'),validateField(email,v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),'Ingresa un correo válido.'),validateField(pass,v=>v.length>=6,'Usa al menos 6 caracteres.')].every(Boolean);if(!valid)return;const user={name:name.value.trim(),email:email.value.trim().toLowerCase(),password:pass.value};localStorage.setItem('vitabars_user',JSON.stringify(user));localStorage.setItem('vitabars_session',JSON.stringify({name:user.name,email:user.email}));refreshUserView();showToast('¡Cuenta creada correctamente!')});
-$('#loginForm').addEventListener('submit',e=>{e.preventDefault();const email=$('#loginEmail'),pass=$('#loginPassword');const basics=[validateField(email,v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),'Ingresa un correo válido.'),validateField(pass,v=>v.length>=6,'Usa al menos 6 caracteres.')].every(Boolean);if(!basics)return;const user=JSON.parse(localStorage.getItem('vitabars_user')||'null');if(!user||user.email!==email.value.trim().toLowerCase()||user.password!==pass.value){showToast('Correo o contraseña incorrectos');return}localStorage.setItem('vitabars_session',JSON.stringify({name:user.name,email:user.email}));refreshUserView();showToast(`¡Bienvenido, ${user.name}!`)});
-$('#logoutButton').addEventListener('click',()=>{localStorage.removeItem('vitabars_session');refreshUserView();showToast('Sesión cerrada')});
+$('#registerForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!supabaseClient){showToast('La conexión con usuarios no está disponible.');return}
+  const name=$('#registerName'),email=$('#registerEmail'),pass=$('#registerPassword');
+  const valid=[validateField(name,v=>v.length>=2,'Ingresa al menos 2 caracteres.'),validateField(email,v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),'Ingresa un correo válido.'),validateField(pass,v=>v.length>=6,'Usa al menos 6 caracteres.')].every(Boolean);
+  if(!valid)return;
+  const button=$('#registerForm button[type="submit"]');button.disabled=true;button.textContent='Creando cuenta…';
+  const {data,error}=await supabaseClient.auth.signUp({email:email.value.trim().toLowerCase(),password:pass.value,options:{data:{name:name.value.trim(),marketing_opt_in:$('#registerMarketing').checked},emailRedirectTo:AUTH_REDIRECT_URL}});
+  button.disabled=false;button.textContent='Crear mi cuenta';
+  if(error){showToast(authMessage(error));return}
+  if(data.session){await refreshUserView();showToast(`¡Bienvenido, ${name.value.trim()}!`)}else{showToast('Cuenta creada. Revisa tu correo para confirmarla.');$$('.auth-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab==='login'));$$('.auth-form').forEach(f=>f.classList.toggle('active',f.id==='loginForm'))}
+});
+$('#loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!supabaseClient){showToast('La conexión con usuarios no está disponible.');return}
+  const email=$('#loginEmail'),pass=$('#loginPassword');
+  const basics=[validateField(email,v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),'Ingresa un correo válido.'),validateField(pass,v=>v.length>=6,'Usa al menos 6 caracteres.')].every(Boolean);
+  if(!basics)return;
+  const button=$('#loginForm button[type="submit"]');button.disabled=true;button.textContent='Ingresando…';
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email:email.value.trim().toLowerCase(),password:pass.value});
+  button.disabled=false;button.textContent='Ingresar';
+  if(error){showToast(authMessage(error));return}
+  await refreshUserView();showToast(`¡Bienvenido, ${data.user?.user_metadata?.name||'de nuevo'}!`);
+});
+$('#logoutButton').addEventListener('click',async()=>{if(supabaseClient)await supabaseClient.auth.signOut();await refreshUserView();showToast('Sesión cerrada')});
+$('#forgotPassword').addEventListener('click',async()=>{const email=$('#loginEmail').value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Escribe tu correo para recuperar la contraseña.');return}const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:AUTH_REDIRECT_URL});showToast(error?authMessage(error):'Te enviamos un enlace de recuperación.')});
 
 $$('.payment-option').forEach(option=>option.addEventListener('click',()=>{$$('.payment-option').forEach(o=>{o.classList.toggle('selected',o===option);$('i',o).textContent=o===option?'●':'○'})}));
 $('#simulatePayment').addEventListener('click',()=>{const method=$('input[name="payment"]:checked').value;if(method==='WhatsApp'){openWhatsApp();return}if(['Crédito','Débito','Culqi'].includes(method)){openCulqi();return}showToast(`Pedido simulado confirmado · ${method}`);cart=[];saveCart();closeModals()});
@@ -96,4 +136,5 @@ const cookieChoice=localStorage.getItem('vitabars_cookies');if(!cookieChoice)set
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});$$('.reveal').forEach(el=>observer.observe(el));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('.cart-drawer').classList.contains('open')?closeDrawer():closeModals()}});
 
+if(supabaseClient)supabaseClient.auth.onAuthStateChange(()=>refreshUserView());
 renderProducts();renderCart();refreshUserView();
