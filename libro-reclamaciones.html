@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Libro de Reclamaciones Virtual de Vitabars.">
+  <title>Libro de Reclamaciones | Vitabars</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./legal.css"><script src="./legal.js" defer></script>
+</head>
+<body class="legal-page">
+  <header class="legal-header"><nav class="container legal-nav"><a class="brand" href="./index.html"><span class="brand-mark"><img src="./imagenes/logo.png" alt=""></span><span>vita<b>bars</b></span></a><div class="legal-nav-links"><a href="./terminos-condiciones.html">Términos</a><a href="./cambios-devoluciones.html">Cambios</a><a class="legal-back" href="./index.html">← Volver a la tienda</a></div></nav></header>
+  <main>
+    <section class="legal-hero"><div class="container"><p class="eyebrow"><span></span> Atención al consumidor</p><h1>Libro de Reclamaciones Virtual</h1><p>Registra aquí una queja o reclamo. Vitabars deberá responder por escrito en un plazo máximo de 15 días hábiles, improrrogables.</p></div></section>
+    <div class="container legal-wrap">
+      <aside class="legal-toc"><strong>En esta página</strong><a href="#proveedor">Datos del proveedor</a><a href="#formulario">Hoja de reclamación</a><a href="#respuesta">Respuesta y seguimiento</a><a href="#base-legal">Base legal</a></aside>
+      <div class="legal-content">
+        <div class="legal-alert"><strong>Conexión pendiente</strong>Los datos del proveedor ya son reales. Antes de publicar el formulario como canal oficial todavía debe conectarse a un receptor que envíe cada hoja a Vitabars; una copia guardada únicamente en el navegador del consumidor no acredita su recepción por la empresa.</div>
+        <section class="legal-card" id="proveedor"><h2>Datos del proveedor</h2><div class="provider-grid"><div class="provider-item"><span>Nombre comercial</span><b>Vitabars</b></div><div class="provider-item"><span>Razón social</span><b>PARA ELLAS S.A.C.</b></div><div class="provider-item"><span>RUC</span><b>20600582802</b></div><div class="provider-item"><span>Domicilio fiscal</span><b>Calle Los Osos N.° 435, Rinconada del Lago Etapa, La Molina, Lima, Perú</b></div><div class="provider-item"><span>Teléfono</span><b>+51 947 227 596</b></div><div class="provider-item"><span>Correo de reclamos</span><b>vitabarsperu@gmail.com</b></div></div></section>
+        <section class="legal-card" id="formulario"><h2>Hoja de reclamación</h2><form class="legal-form" id="claimForm">
+          <fieldset class="legal-form-section"><legend>1. Datos del consumidor</legend><div class="form-grid">
+            <label class="wide">Nombres y apellidos completos<input name="fullName" autocomplete="name" required></label>
+            <label>Tipo de documento<select name="documentType" required><option value="">Selecciona</option><option>DNI</option><option>CE</option><option>Pasaporte</option></select></label>
+            <label>Número de documento<input name="documentNumber" inputmode="numeric" required></label>
+            <label class="wide">Domicilio<input name="consumerAddress" autocomplete="street-address" required></label>
+            <label>Teléfono<input name="phone" type="tel" autocomplete="tel" required></label><label>Correo electrónico<input name="email" type="email" autocomplete="email" required></label>
+            <label class="wide">Padre, madre o representante (si el consumidor es menor de edad)<input name="guardian"></label>
+          </div></fieldset>
+          <fieldset class="legal-form-section"><legend>2. Producto o servicio</legend><div class="form-grid"><label>Fecha<input id="claimDate" name="date" type="date" required></label><label>Monto reclamado (si aplica)<input name="amount" inputmode="decimal" placeholder="S/ 0.00"></label><label class="wide">Producto o servicio involucrado<input name="product" required placeholder="Producto, número de pedido o servicio"></label></div></fieldset>
+          <fieldset class="legal-form-section"><legend>3. Tipo y detalle</legend><div class="type-options"><label class="type-option"><input type="radio" name="claimType" value="Reclamo" required><b>Reclamo</b><small>Disconformidad relacionada con un producto o servicio.</small></label><label class="type-option"><input type="radio" name="claimType" value="Queja" required><b>Queja</b><small>Malestar por la atención o trato, no vinculado directamente al producto o servicio.</small></label></div><div class="form-grid" style="margin-top:16px"><label class="wide">Detalle del motivo<textarea name="detail" required minlength="20"></textarea></label><label class="wide">Pedido del consumidor<textarea name="request" required placeholder="Indica la solución que esperas: cambio, devolución, mejor atención, etc."></textarea></label></div></fieldset>
+          <fieldset class="legal-form-section"><legend>4. Declaración y respuesta</legend><div class="form-grid"><label>Firma declarada del consumidor<input name="signature" required placeholder="Escribe tus nombres y apellidos"></label><label>Canal de respuesta<select name="responseChannel" required><option value="">Selecciona</option><option>Correo electrónico</option><option>Teléfono</option><option>Domicilio</option></select></label><label class="wide consent-row"><input type="checkbox" required> Declaro que la información proporcionada es verdadera y autorizo su tratamiento para gestionar esta queja o reclamo conforme a la Ley N.° 29733.</label></div></fieldset>
+          <div class="legal-note">La presentación de un reclamo no impide acudir a otras vías de solución de controversias ni constituye requisito previo para interponer una denuncia ante el Indecopi.</div>
+          <button class="btn btn-primary" type="submit">Generar hoja y código</button>
+        </form><div class="claim-result" id="claimResult"><strong>Hoja generada</strong><div class="claim-code" id="claimCode"></div><p id="claimStatus"></p><div class="claim-actions"><button class="btn btn-primary" id="downloadClaim" type="button">Descargar copia</button><button class="btn btn-secondary" id="printClaim" type="button">Imprimir / firmar</button></div></div></section>
+        <section class="legal-card" id="respuesta"><h2>Respuesta y seguimiento</h2><p>El proveedor debe asignar un código de identificación, entregar una copia de la hoja y responder al canal indicado por el consumidor en un plazo máximo de <strong>15 días hábiles, improrrogables</strong>. La respuesta deberá indicar las medidas adoptadas o la posición del proveedor.</p><div class="provider-response"><strong>Uso exclusivo del proveedor</strong><div><span>Fecha de recepción / respuesta</span></div><div><span>Nombre del representante</span></div><div class="response-wide"><span>Respuesta y medidas adoptadas</span></div><div><span>Firma o constancia del representante</span></div></div></section>
+        <section class="legal-card" id="base-legal"><h2>Base legal</h2><ul><li>Ley N.° 29571, Código de Protección y Defensa del Consumidor.</li><li>D.S. N.° 011-2011-PCM, Reglamento del Libro de Reclamaciones, y modificatorias.</li><li>Ley N.° 31435 y D.S. N.° 101-2022-PCM: plazo máximo de respuesta de 15 días hábiles.</li><li>Ley N.° 29733, Ley de Protección de Datos Personales, y normativa vigente.</li></ul><p class="legal-sources">Referencia oficial: <a href="https://www.gob.pe/institucion/indecopi/noticias/641594-modifican-reglamento-del-libro-de-reclamaciones-para-que-proveedores-atiendan-reclamos-y-quejas-de-clientes-en-15-dias-habiles" target="_blank" rel="noopener">Indecopi — modificación del plazo de atención</a>.</p></section>
+      </div>
+    </div>
+  </main>
+  <footer class="legal-footer"><div class="container legal-footer-inner"><span>© 2026 Vitabars</span><a href="./terminos-condiciones.html">Términos y condiciones</a><a href="./cambios-devoluciones.html">Cambios y devoluciones</a><a href="./index.html">Volver a la tienda</a></div></footer>
+</body></html>

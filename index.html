@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vitabars: barras saludables, proteicas y naturales para acompañar tu ritmo.">
+  <meta name="theme-color" content="#173f32">
+  <title>Vitabars | Energía saludable para tu día</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir al contenido</a>
+  <div class="announcement">Envío S/ 10 en Lima <span>•</span> Gratis por compras mayores a S/ 100</div>
+
+  <header class="site-header" id="inicio">
+    <nav class="navbar container" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Vitabars, inicio">
+        <span class="brand-mark"><img src="./imagenes/logo.png" alt=""></span><span>vita<b>bars</b></span>
+      </a>
+      <button class="menu-toggle icon-btn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="nav-actions">
+        <button class="user-button icon-btn" aria-label="Ingresar a mi cuenta" title="Mi cuenta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/></svg>
+        </button>
+        <button class="cart-button" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H6M10 21a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+          <span>Carrito</span><span class="cart-count" aria-live="polite">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-blob hero-blob-one"></div><div class="hero-blob hero-blob-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Nutrición que sí provoca</p>
+          <h1>Energía saludable <em>para tu día</em></h1>
+          <p class="hero-lead">Barras ricas, prácticas y nutritivas para estudiar, trabajar o entrenar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#productos">Comprar ahora <span>→</span></a>
+            <a class="btn btn-secondary" href="#productos">Ver sabores</a>
+          </div>
+          <div class="hero-facts" aria-label="Información del catálogo"><span>Fotos reales</span><span>Precios visibles</span><span>Compra directa</span></div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-products" aria-label="Selección de productos reales Vitabars">
+            <img class="hero-product hero-product-main" src="./imagenes/lucuma_y_mani_73gr.png" alt="Vitabars Lúcuma y Maní">
+            <img class="hero-product hero-product-left" src="./imagenes/menta_y_chocolate.png" alt="Vitabars Menta y Chocolate">
+            <img class="hero-product hero-product-right" src="./imagenes/saldemaras_y_chocolate.png" alt="Vitabars Sal de Maras y Chocolate">
+          </div>
+          <div class="floating-card natural"><strong>Fotos</strong><span>reales del<br>catálogo</span></div>
+          <div class="floating-card protein"><span class="bolt">ϟ</span><div><strong>Información clara</strong><small>Ingredientes y proteína por producto</small></div></div>
+        </div>
+      </div>
+      <div class="marquee" aria-hidden="true"><div>PROTEÍNA REAL <span>✦</span> SIN CULPAS <span>✦</span> SABORES PERUANOS <span>✦</span> ENERGÍA NATURAL <span>✦</span> PROTEÍNA REAL <span>✦</span> SIN CULPAS <span>✦</span></div></div>
+    </section>
+
+    <section class="section about" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <div class="ingredient-art"><span class="bar-shape"></span><span class="nut nut-a"></span><span class="nut nut-b"></span><span class="cacao"></span><p>Hecho para<br><strong>moverte</strong></p></div>
+          <div class="about-badge"><b>6</b><span>sabores<br>para elegir</span></div>
+        </div>
+        <div class="about-copy reveal">
+          <p class="eyebrow"><span></span> Nuestra esencia</p>
+          <h2>Lo práctico también puede ser <em>delicioso</em></h2>
+          <p>En Vitabars convertimos ingredientes reales en snacks saludables, ricos y fáciles de llevar. Sin fórmulas complicadas ni promesas vacías: solo una opción honesta para recargar energía.</p>
+          <p>Perfectas para rutinas activas, mochilas apuradas y ese momento del día en el que necesitas algo que te siga el ritmo.</p>
+          <div class="catalog-facts"><span>Proteicas</span><span>Superfoods</span><span>Formato mini</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="beneficios">
+      <div class="container">
+        <div class="section-heading centered reveal"><p class="eyebrow"><span></span> Simplemente mejor</p><h2>Bienestar que se siente</h2><p>Todo lo que necesitas. Nada de lo que no.</p></div>
+        <div class="benefit-grid">
+          <article class="benefit-card reveal"><div class="benefit-icon">✿</div><span>01</span><h3>Ingredientes reales</h3><p>Cacao, frutos secos y superfoods peruanos que puedes reconocer.</p></article>
+          <article class="benefit-card featured reveal"><div class="benefit-icon">ϟ</div><span>02</span><h3>Energía práctica</h3><p>Una barra lista para acompañarte del primer pendiente al último entrenamiento.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-icon">♥</div><span>03</span><h3>Sabor saludable</h3><p>Combinaciones que alimentan bien y saben todavía mejor.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products" id="productos">
+      <div class="container">
+        <div class="products-head reveal"><div><p class="eyebrow"><span></span> Elige tu favorita</p><h2>Un sabor para cada ritmo</h2></div><p>Descubre combinaciones inspiradas en lo mejor de nuestra tierra.</p></div>
+        <div class="filters" role="group" aria-label="Filtrar productos">
+          <button class="filter active" data-filter="all">Todos <span>6</span></button>
+          <button class="filter" data-filter="proteicas">Proteicas</button>
+          <button class="filter" data-filter="superfoods">Superfoods</button>
+          <button class="filter" data-filter="mini">Mini</button>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-card reveal"><div><p>Tu próxima pausa puede saber mejor.</p><h2>¿Listo para recargar?</h2></div><a class="btn btn-light" href="#productos">Elegir mis barras <span>→</span></a></div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="brand brand-light" href="#inicio"><span class="brand-mark"><img src="./imagenes/logo.png" alt=""></span><span>vita<b>bars</b></span></a><p>Energía honesta para vidas en movimiento.</p><div class="social"><a href="https://instagram.com/vitabars.pe" target="_blank" rel="noopener" aria-label="Instagram">ig</a><a href="https://wa.me/51947227596" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a></div></div>
+      <div><h3>Explora</h3><a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#nosotros">Sobre nosotros</a><a href="#contacto">Contacto</a></div>
+      <div><h3>Información legal</h3><a href="./terminos-condiciones.html">Términos y condiciones</a><a href="./cambios-devoluciones.html">Cambios y devoluciones</a><a href="./libro-reclamaciones.html">Libro de Reclamaciones</a><a href="./terminos-condiciones.html#privacidad">Protección de datos</a></div>
+      <div><h3>Hablemos</h3><p>WhatsApp: +51 947 227 596</p><p>Instagram: @vitabars.pe</p><p>vitabarsperu@gmail.com</p></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Vitabars. Todos los derechos reservados.</span><a class="claims-link" href="./libro-reclamaciones.html">▤ Libro de Reclamaciones</a><span>Hecho con ♥ en Perú</span></div>
+  </footer>
+
+  <button class="whatsapp-float" id="whatsappFloat" aria-label="Comprar por WhatsApp"><span>wa</span><small>Compra por WhatsApp</small></button>
+  <div class="overlay" hidden></div>
+
+  <aside class="cart-drawer" aria-hidden="true" aria-label="Carrito de compras">
+    <div class="drawer-head"><div><small>Tu selección</small><h2>Mi carrito <span id="drawerCount">(0)</span></h2></div><button class="drawer-close icon-btn" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><div>⌁</div><h3>Tu carrito está esperando</h3><p>Elige una barra deliciosa para empezar.</p><button class="btn btn-primary close-and-shop">Ver productos</button></div>
+    <div class="cart-footer" id="cartFooter" hidden>
+      <div class="cart-summary"><div><span>Subtotal</span><b id="cartSubtotal">S/ 0.00</b></div><div><span>Envío</span><b id="cartShipping">S/ 10.00</b></div><div class="total"><span>Total</span><b id="cartTotal">S/ 0.00</b></div></div>
+      <button class="btn btn-primary btn-block" id="checkoutButton">Ir a pagar <span>→</span></button>
+      <button class="whatsapp-checkout" id="cartWhatsApp">Continuar por WhatsApp</button>
+      <small class="secure-note">Checkout demostrativo · El pago real se realiza fuera de esta web</small>
+    </div>
+  </aside>
+
+  <section class="modal auth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="modal-close icon-btn" aria-label="Cerrar">×</button>
+    <div class="auth-brand"><span class="brand-mark"><img src="./imagenes/logo.png" alt=""></span><p>Una cuenta. Más energía.</p></div>
+    <div id="loggedOutView">
+      <div class="auth-tabs"><button class="auth-tab active" data-tab="login">Ingresar</button><button class="auth-tab" data-tab="register">Crear cuenta</button></div>
+      <form id="loginForm" class="auth-form active" novalidate><h2 id="authTitle">Qué gusto verte</h2><p>Ingresa para continuar con tu compra.</p><label>Correo electrónico<input type="email" id="loginEmail" placeholder="tu@correo.com" autocomplete="email"><small class="error"></small></label><label>Contraseña<input type="password" id="loginPassword" placeholder="Mínimo 6 caracteres" autocomplete="current-password"><small class="error"></small></label><button class="btn btn-primary btn-block" type="submit">Ingresar</button></form>
+      <form id="registerForm" class="auth-form" novalidate><h2>Crea tu cuenta</h2><p>Tu próxima barra está a un paso.</p><label>Nombre<input type="text" id="registerName" placeholder="Tu nombre" autocomplete="name"><small class="error"></small></label><label>Correo electrónico<input type="email" id="registerEmail" placeholder="tu@correo.com" autocomplete="email"><small class="error"></small></label><label>Contraseña<input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password"><small class="error"></small></label><button class="btn btn-primary btn-block" type="submit">Crear mi cuenta</button></form>
+    </div>
+    <div id="loggedInView" class="logged-in" hidden><div class="login-check">✓</div><h2>¡Hola, <span id="userName"></span>!</h2><p>Tu sesión está activa. Ya puedes seguir eligiendo tus favoritas.</p><button class="btn btn-secondary btn-block" id="logoutButton">Cerrar sesión</button></div>
+  </section>
+
+  <section class="modal checkout-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button class="modal-close checkout-close icon-btn" aria-label="Cerrar">×</button>
+    <div class="checkout-layout">
+      <div class="checkout-main"><p class="eyebrow"><span></span> Último paso</p><h2 id="checkoutTitle">¿Cómo quieres pagar?</h2><p class="simulation-notice"><strong>Modo demostración.</strong> Esta es una simulación. Para pagos reales se debe integrar una pasarela como Culqi, Mercado Pago, Niubiz o Izipay.</p>
+        <div class="payment-options" id="paymentOptions">
+          <label class="payment-option selected"><input type="radio" name="payment" value="Crédito" checked><span class="payment-icon">▣</span><span><b>Tarjeta de crédito</b><small>Visa, Mastercard</small></span><i>●</i></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Débito"><span class="payment-icon">▤</span><span><b>Tarjeta de débito</b><small>Pago seguro simulado</small></span><i>○</i></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Yape"><span class="payment-icon purple">Y</span><span><b>Yape</b><small>Pago con código QR</small></span><i>○</i></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Plin"><span class="payment-icon cyan">P</span><span><b>Plin</b><small>Pago con código QR</small></span><i>○</i></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Transferencia"><span class="payment-icon">↔</span><span><b>Transferencia bancaria</b><small>Recibirás los datos de cuenta</small></span><i>○</i></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Contra entrega"><span class="payment-icon">⌂</span><span><b>Pago contra entrega</b><small>Disponible en zonas seleccionadas</small></span><i>○</i></label>
+          <label class="payment-option culqi-option"><input type="radio" name="payment" value="Culqi"><span class="payment-icon culqi">C</span><span><b>Culqi</b><small>Pago online en la plataforma segura de Culqi</small></span><i>○</i></label>
+          <label class="payment-option"><input type="radio" name="payment" value="WhatsApp"><span class="payment-icon green">wa</span><span><b>Compra por WhatsApp</b><small>Coordina el pago con nosotros</small></span><i>○</i></label>
+        </div>
+        <button class="btn culqi-button btn-block" id="culqiPayment">Pagar con Culqi <span>↗</span></button>
+        <button class="btn btn-primary btn-block" id="simulatePayment">Confirmar pedido simulado</button>
+      </div>
+      <aside class="checkout-summary"><h3>Resumen del pedido</h3><div id="checkoutItems"></div><div class="checkout-total"><span>Total</span><b id="checkoutTotal">S/ 0.00</b></div></aside>
+    </div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Preferencias de cookies" hidden><div class="cookie-icon">◐</div><div><strong>Tu experiencia, a tu gusto</strong><p>Usamos cookies para mejorar tu experiencia en la web.</p></div><div class="cookie-actions"><button class="btn btn-secondary" data-cookie="rejected">Rechazar</button><button class="btn btn-primary" data-cookie="accepted">Aceptar</button></div></div>
+</body>
+</html>
